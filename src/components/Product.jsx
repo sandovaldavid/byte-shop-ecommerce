@@ -11,8 +11,8 @@ function Product({ product }) {
         ? `/products/${product.slug.current}`
         : "#";
     const productImage =
-        product?.image && product.image.length > 0
-            ? urlFor(product.image[0]).url()
+        product?.images && product.images.length > 0
+            ? urlFor(product.images[0]).url()
             : "https://placehold.co/600x400.png";
 
     return (
