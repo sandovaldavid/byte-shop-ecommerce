@@ -127,7 +127,7 @@ function ProductList({ initialProducts = [] }) {
                             {" "}
                             {products.map((product) => (
                                 <Product
-                                    key={product.slug?.current || product._id}
+                                    key={product.slug?.current}
                                     product={product}
                                 />
                             ))}
