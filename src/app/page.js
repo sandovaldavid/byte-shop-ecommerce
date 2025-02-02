@@ -37,7 +37,7 @@ async function Page() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {products.map((product) => (
-                            <Product key={product._id} product={product} />
+                            <Product key={product.slug.current} product={product} />
                         ))}
                     </div>
                 )}
