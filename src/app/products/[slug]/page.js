@@ -1,34 +1,55 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
+import { client, urlFor } from '@/lib/client';
 
 function ProductDetail({ params }) {
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(0);
 
-    // Mock data - Reemplazar con datos reales de Sanity
-    const product = {
-        name: "Smartwatch Pro X",
-        description: "El último smartwatch con tecnología avanzada que combina elegancia y funcionalidad. Incluye monitoreo de salud 24/7, GPS integrado, y resistencia al agua.",
-        price: 299.99,
-        oldPrice: 399.99,
-        discount: 25,
-        rating: 4.8,
-        inStock: true,
-        specs: [
-            "Pantalla AMOLED de 1.9\"",
-            "Batería de 5 días",
-            "Resistente al agua IP68",
-            "Sensor cardíaco avanzado",
-            "GPS integrado"
-        ],
-        images: [
-            "/products/watch_1.webp",
-            "/products/watch_2.webp",
-            "/products/watch_3.webp",
-        ]
-    };
+    const { slug } = React.use(params);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const query = `*[_type == "product" && slug.current == $slug][0]`;
+                const productData = await client.fetch(query, { slug });
+                setProduct(productData);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+                setLoading(false);
+            }
+        };
+
+        if (slug) {
+            fetchProduct();
+        }
+    }, [slug]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-dark flex items-center justify-center">
+                <div className="text-light/70">Cargando...</div>
+            </div>
+        );
+    }
+
+    if (!product) {
+        return (
+            <div className="min-h-screen bg-dark flex flex-col items-center justify-center gap-4">
+                <div className="text-6xl">😢</div>
+                <h2 className="text-2xl font-medium text-light">Producto no encontrado</h2>
+                <p className="text-light/70">El producto que buscas no existe o no está disponible.</p>
+            </div>
+        );
+    }
+
+    const productImages = product.images || [];
+    const currentImage = productImages[selectedImage] || productImages[0];
 
     return (
         <div className="min-h-screen bg-dark py-20">
@@ -37,37 +58,43 @@ function ProductDetail({ params }) {
                     <div className="lg:w-1/2 space-y-6">
                         <div className="relative aspect-square rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm">
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent2/5"></div>
-                            <Image
-                                src={product.images[selectedImage]}
-                                alt={product.name}
-                                fill
-                                className="object-cover"
-                            />
+                            {currentImage && (
+                                <Image
+                                    src={urlFor(currentImage).url()}
+                                    alt={product.name}
+                                    fill
+                                    className="object-cover"
+                                />
+                            )}
                             {product.discount && (
                                 <div className="absolute top-4 left-4 bg-accent1/90 text-light px-3 py-1 rounded-full backdrop-blur-sm text-sm">
                                     -{product.discount}%
                                 </div>
                             )}
                         </div>
-                        <div className="grid grid-cols-4 gap-4">
-                            {product.images.map((image, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setSelectedImage(index)}
-                                    className={`relative aspect-square rounded-lg overflow-hidden ${selectedImage === index
-                                            ? 'ring-2 ring-accent1'
-                                            : 'ring-1 ring-white/10'
+
+                        {productImages.length > 0 && (
+                            <div className="grid grid-cols-4 gap-4">
+                                {productImages.map((image, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setSelectedImage(index)}
+                                        className={`relative aspect-square rounded-lg overflow-hidden ${
+                                            selectedImage === index
+                                                ? 'ring-2 ring-accent1'
+                                                : 'ring-1 ring-white/10'
                                         }`}
-                                >
-                                    <Image
-                                        src={image}
-                                        alt={`${product.name} ${index + 1}`}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </button>
-                            ))}
-                        </div>
+                                    >
+                                        <Image
+                                            src={urlFor(image).url()}
+                                            alt={`${product.name} ${index + 1}`}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <div className="lg:w-1/2 space-y-8">
