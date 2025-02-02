@@ -23,6 +23,7 @@ export default {
         'fade-right': 'fadeRight 1s ease-out forwards',
         'fade-left': 'fadeLeft 1s ease-out forwards',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 20s linear infinite',
       },
       keyframes: {
         fadeRight: {
