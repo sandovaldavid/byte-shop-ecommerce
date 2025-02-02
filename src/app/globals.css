@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Modo Claro */
+/* Modo Claro */
   --primary-light: #2D3AFE;
   --secondary-light: #00F7FF;
   --dark-light: #0A0B1E;
@@ -19,7 +19,7 @@
   --primary-dark: #4B56FF;
   --secondary-dark: #33FFFF;
   --dark-dark: #000004;
-  --light-dark: #1A1B3D;
+  --light-dark: #F8F9FF;
   --accent1-dark: #FF4777;
   --accent2-dark: #9985FF;
   --success-dark: #33FFB6;
