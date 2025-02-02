@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function HeroBanner({ heroBanner }) {
     return (
@@ -37,13 +38,36 @@ function HeroBanner({ heroBanner }) {
                                 {heroBanner?.buttonText || "Comprar Ahora"}
                             </button>
                         </Link>
-                        <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-light rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-secondary/50">
-                            Explorar Más
-                        </button>
+                        <Link href="/products">
+                            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-light rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-secondary/50">
+                                Explorar Más
+                            </button>
+                        </Link>
                     </div>
                 </div>
 
                 <div className="hidden lg:block w-1/3 h-full relative">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-[70%] bg-gradient-to-b from-transparent via-secondary/50 to-transparent"></div>
+                </div>
+                <div className="hidden lg:block w-1/3 h-full relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-[90%] h-[90%]">
+                            <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent1/20 rounded-full blur-3xl animate-pulse-slow"></div>
+                            <div className="relative h-full w-full">
+                                <Image
+                                    src="/products/hero-product.webp"
+                                    alt={
+                                        heroBanner?.smallText ||
+                                        "Nuevo Producto"
+                                    }
+                                    fill
+                                    className="object-contain transform hover:scale-105 transition-transform duration-700 z-10"
+                                    priority
+                                />
+                            </div>
+                            <div className="absolute -inset-4 border border-white/10 rounded-full animate-spin-slow"></div>
+                        </div>
+                    </div>
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-[70%] bg-gradient-to-b from-transparent via-secondary/50 to-transparent"></div>
                 </div>
             </div>
