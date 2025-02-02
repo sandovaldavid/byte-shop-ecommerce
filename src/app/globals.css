@@ -74,3 +74,8 @@ body {
   background-color: var(--background);
   color: var(--text);
 }
+
+option{
+  background-color: var(--background);
+  color: var(--text);
+}
