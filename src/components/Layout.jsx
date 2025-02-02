@@ -7,11 +7,6 @@ import Footer from './Footer'
 function Layout({ children }) {
     return (
         <div>
-            <Head>
-                <title>TechShop Ecommerce</title>
-                <meta name="description" content="TechShop  Ecommerce Site" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <header>
                 <Navbar />
             </header>
