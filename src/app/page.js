@@ -26,7 +26,6 @@ async function Page() {
                 <p className="text-light/70 mb-8">Discover our most popular tech products</p>
 
                 {!products || products.length === 0 ? (
-                    // Mensaje cuando no hay productos
                     <div className="flex flex-col items-center justify-center py-20 space-y-6">
                         <div className="text-6xl">📱</div>
                         <h3 className="text-2xl font-medium text-light">No hay productos disponibles</h3>
@@ -36,17 +35,10 @@ async function Page() {
                         </p>
                     </div>
                 ) : (
-                    // Grid de productos
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {products.map((product) => (
-                                <Product
-                                    key={product._id}
-                                    product={{
-                                        ...product,
-                                        slug: product.slug?.current
-                                    }}
-                                />
-                            ))}
+                        {products.map((product) => (
+                            <Product key={product._id} product={product} />
+                        ))}
                     </div>
                 )}
             </div>
