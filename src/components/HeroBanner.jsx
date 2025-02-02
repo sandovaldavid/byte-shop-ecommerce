@@ -2,7 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { urlFor } from '../lib/client';
+
 function HeroBanner({ heroBanner }) {
+
     return (
         <div className="relative h-[600px] w-full overflow-hidden bg-gradient-to-tr from-dark via-primary/80 to-accent2/50">
             <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-[2px]"></div>
@@ -55,7 +58,7 @@ function HeroBanner({ heroBanner }) {
                             <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent1/20 rounded-full blur-3xl animate-pulse-slow"></div>
                             <div className="relative h-full w-full">
                                 <Image
-                                    src="/products/hero-product.webp"
+                                    src={urlFor(heroBanner?.image).url() || "https://placehold.co/600x400"}
                                     alt={
                                         heroBanner?.smallText ||
                                         "Nuevo Producto"
