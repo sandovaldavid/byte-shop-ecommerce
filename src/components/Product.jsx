@@ -7,7 +7,13 @@ import { urlFor } from '../lib/client';
 function Product({ product }) {
     if (!product) return null;
 
-    const productUrl = product.slug ? `/products/${product.slug}` : "#";
+    const productUrl = product.slug?.current
+        ? `/products/${product.slug.current}`
+        : "#";
+    const productImage =
+        product?.image && product.image.length > 0
+            ? urlFor(product.image[0]).url()
+            : "https://placehold.co/600x400.png";
 
     return (
         <Link href={productUrl}>
@@ -21,7 +27,7 @@ function Product({ product }) {
                 <div className="relative mb-4 aspect-square overflow-hidden rounded-lg bg-white/5">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent2/5"></div>
                     <Image
-                        src={ urlFor(product?.image[0]).url() || "https://placehold.co/600x400"}
+                        src={ productImage }
                         alt={product.name || "Producto no disponible"}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-110"
