@@ -26,7 +26,8 @@ export default {
         'fade-up': 'fade-up 0.5s ease-out',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'spin-slow': 'spin 20s linear infinite',
-        'shake': 'shake 0.5s ease-in-out'
+        'shake': 'shake 0.5s ease-in-out',
+        'spin-reverse': 'spin 2s linear infinite reverse',
       },
       keyframes: {
         fadeRight: {
