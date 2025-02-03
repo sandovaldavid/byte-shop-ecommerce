@@ -16,7 +16,7 @@ function Layout({ children }) {
                     <Navbar />
                 </header>
             )}
-            <main>{children}</main>
+            <main className="pt-16">{children}</main>
             {!isAuthPage && <Footer />}
         </div>
     );
