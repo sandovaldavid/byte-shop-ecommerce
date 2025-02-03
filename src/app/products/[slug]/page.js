@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { client, urlFor } from '@/lib/client';
+import { Loading } from '@/components';
 
 function ProductDetail({ params }) {
     const [product, setProduct] = useState(null);
@@ -31,11 +32,7 @@ function ProductDetail({ params }) {
     }, [slug]);
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-dark flex items-center justify-center">
-                <div className="text-light/70">Cargando...</div>
-            </div>
-        );
+        return <Loading />
     }
 
     if (!product) {
