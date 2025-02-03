@@ -7,10 +7,12 @@ import {
     AiOutlineMenu,
     AiOutlineClose,
 } from "react-icons/ai";
+import { useCart } from "../context/CartContext";
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const { openCart } = useCart();
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-dark/80  backdrop-blur-md border-b border-white/10">
@@ -68,15 +70,16 @@ function Navbar() {
                             )}
                         </div>
 
-                        <Link
-                            href="/cart"
-                            className="relative p-2 text-light/80 hover:text-secondary transition-colors duration-200"
+                        <button
+                            onClick={openCart}
+                            className="relative p-2 hover:bg-white/5 rounded-lg transition-colors"
                         >
-                            <AiOutlineShoppingCart className="w-6 h-6" />
-                            <span className="absolute -top-1 -right-1 bg-accent1 text-light text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                                0
+                            <AiOutlineShoppingCart className="text-2xl text-light/70 hover:text-accent1" />
+                            {/* Badge de cantidad */}
+                            <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent1 text-light text-xs rounded-full flex items-center justify-center">
+                                2
                             </span>
-                        </Link>
+                        </button>
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
