@@ -67,7 +67,7 @@ function ProductDetail({ params }) {
                                 />
                             )}
                             {product.discount && (
-                                <div className="absolute top-4 left-4 bg-accent1/90 text-light px-3 py-1 rounded-full backdrop-blur-sm text-sm">
+                                <div className="absolute top-4 left-4 bg-accent1 text-light px-3 py-1 rounded-full backdrop-blur-sm text-sm">
                                     -{product.discount}%
                                 </div>
                             )}
