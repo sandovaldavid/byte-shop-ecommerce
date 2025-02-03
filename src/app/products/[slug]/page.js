@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { client, urlFor } from '@/lib/client';
-import { Loading } from '@/components';
+import { Loading, NoFound} from '@/components';
 
 function ProductDetail({ params }) {
     const [product, setProduct] = useState(null);
@@ -36,13 +36,7 @@ function ProductDetail({ params }) {
     }
 
     if (!product) {
-        return (
-            <div className="min-h-screen bg-dark flex flex-col items-center justify-center gap-4">
-                <div className="text-6xl">😢</div>
-                <h2 className="text-2xl font-medium text-light">Producto no encontrado</h2>
-                <p className="text-light/70">El producto que buscas no existe o no está disponible.</p>
-            </div>
-        );
+        return <NoFound />;
     }
 
     const productImages = product.images || [];
