@@ -7,4 +7,4 @@ export { default as Navbar } from './Navbar.jsx';
 export { default as Product } from './Product.jsx';
 export { default as ProductList } from './ProductList.jsx';
 export { default as Loading } from './Loading.jsx';
-export { default as NoFound } from './NoFound.jsx'
+export { default as NotFound } from './NotFound.jsx'

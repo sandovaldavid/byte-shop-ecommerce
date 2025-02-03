@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { client, urlFor } from '@/lib/client';
-import { Loading, NoFound} from '@/components';
+import { Loading, NotFound} from '@/components';
 
 function ProductDetail({ params }) {
     const [product, setProduct] = useState(null);
@@ -36,7 +36,7 @@ function ProductDetail({ params }) {
     }
 
     if (!product) {
-        return <NoFound />;
+        return <NotFound />;
     }
 
     const productImages = product.images || [];
