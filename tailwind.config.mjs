@@ -28,6 +28,7 @@ export default {
         'spin-slow': 'spin 20s linear infinite',
         'shake': 'shake 0.5s ease-in-out',
         'spin-reverse': 'spin 2s linear infinite reverse',
+        'bounce-slow': 'bounce 3s infinite',
       },
       keyframes: {
         fadeRight: {
