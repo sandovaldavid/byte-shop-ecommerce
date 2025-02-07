@@ -42,8 +42,19 @@ export function AuthProvider({ children }) {
 
 	const login = async (email, password) => {
 		try {
-			await authApi.loginUser(email, password);
-			await checkUser();
+			const session = await authApi.loginUser(email, password);
+
+			if (!session.temporary) {
+				const user = await account.get();
+				await checkUser();
+				if (!user.emailVerification) {
+					throw new Error(
+						'Por favor verifica tu email antes de iniciar sesión'
+					);
+				}
+			}
+
+			return session;
 		} catch (error) {
 			console.error('Error en login:', error);
 			throw error;
@@ -53,9 +64,6 @@ export function AuthProvider({ children }) {
 	const register = async (email, password, name) => {
 		try {
 			const user = await authApi.registerUser(email, password, name);
-			await authApi.sendVerificationEmail(
-				`${window.location.origin}/auth/verify`
-			);
 			return user;
 		} catch (error) {
 			console.error('Error en registro:', error);
