@@ -16,15 +16,25 @@ export function AuthProvider({ children }) {
 	const checkUser = async () => {
 		try {
 			const session = await account.getSession('current');
-			if (session) {
-				const currentUser = await authApi.getCurrentUser();
-				setUser(currentUser);
+
+			if (session && session.current) {
+				try {
+					const currentUser = await authApi.getCurrentUser();
+					setUser(currentUser);
+				} catch (error) {
+					console.error('Error obteniendo datos del usuario:', error);
+					setUser(null);
+				}
 			} else {
 				setUser(null);
 			}
 		} catch (error) {
-			console.error('Error checking user:', error);
-			setUser(null);
+			if (error.code === 401) {
+				setUser(null);
+			} else {
+				console.error('Error verificando sesión:', error);
+				setUser(null);
+			}
 		} finally {
 			setLoading(false);
 		}
