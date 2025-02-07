@@ -1,11 +1,12 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { authApi } from '@/api/authController';
+import { Loading } from '@/components';
 
-function VerifyPage() {
+function VerifyPageContent() {
 	const searchParams = useSearchParams();
 	const [status, setStatus] = useState('loading');
 	const userId = searchParams.get('userId');
@@ -116,6 +117,14 @@ function VerifyPage() {
 				</div>
 			</div>
 		</div>
+	);
+}
+
+function VerifyPage() {
+	return (
+		<Suspense fallback={<Loading />}>
+			<VerifyPageContent />
+		</Suspense>
 	);
 }
 
