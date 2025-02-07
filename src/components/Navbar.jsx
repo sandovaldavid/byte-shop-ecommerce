@@ -87,7 +87,7 @@ function Navbar() {
 
                         {/* Botones de Auth */}
                         <div className="hidden md:flex items-center space-x-3">
-                            {user ? (
+                            {user && user.name ? (
                                 <div className="flex items-center space-x-4">
                                     <span className="text-light/80">
                                         Hola, {user.name}
