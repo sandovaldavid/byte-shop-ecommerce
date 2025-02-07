@@ -1,14 +1,35 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AiOutlineMail, AiOutlineLock, AiOutlineGoogle } from 'react-icons/ai';
+import { useAuth } from '@/context/AuthContext';
 
 function LoginPage() {
+	const router = useRouter();
+	const { login } = useAuth();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setError('');
+		setIsLoading(true);
+
+		try {
+			await login(email, password);
+			router.push('/');
+		} catch (error) {
+			console.error('Error en login:', error);
+			setError(
+				'Error al iniciar sesión: ' +
+					(error.message || 'Credenciales inválidas')
+			);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -70,9 +91,18 @@ function LoginPage() {
 					<div className='space-y-4'>
 						<button
 							type='submit'
-							className='w-full bg-gradient-to-r from-accent1 to-accent2 hover:from-accent2 hover:to-accent1 text-light py-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-accent1/20'>
-							Iniciar Sesión
+							disabled={isLoading}
+							className='w-full bg-gradient-to-r from-accent1 to-accent2 hover:from-accent2 hover:to-accent1 text-light py-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-accent1/20 disabled:opacity-50 disabled:cursor-not-allowed'>
+							{isLoading
+								? 'Iniciando sesión...'
+								: 'Iniciar Sesión'}
 						</button>
+
+						{error && (
+							<p className='text-red-500 text-sm text-center'>
+								{error}
+							</p>
+						)}
 
 						<button
 							type='button'
