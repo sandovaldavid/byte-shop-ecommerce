@@ -29,6 +29,9 @@ export default {
 				shake: 'shake 0.5s ease-in-out',
 				'spin-reverse': 'spin 2s linear infinite reverse',
 				'bounce-slow': 'bounce 3s infinite',
+				gradient: 'gradient 3s linear infinite',
+				shine: 'shine 2s linear infinite',
+				'pulse-slow': 'pulse 3s linear infinite',
 			},
 			keyframes: {
 				fadeRight: {
@@ -51,6 +54,14 @@ export default {
 					'0%, 100%': { transform: 'translateX(0)' },
 					'25%': { transform: 'translateX(-5px)' },
 					'75%': { transform: 'translateX(5px)' },
+				},
+				gradient: {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+				},
+				shine: {
+					'0%': { backgroundPosition: '0% 0%' },
+					'100%': { backgroundPosition: '100% 100%' },
 				},
 			},
 			perspective: {
