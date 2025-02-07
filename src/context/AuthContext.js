@@ -74,6 +74,7 @@ export function AuthProvider({ children }) {
 	const logout = async () => {
 		try {
 			await authApi.logoutUser();
+			sessionStorage.removeItem('currentUser'); // clean cache
 			setUser(null);
 		} catch (error) {
 			console.error('Error en logout:', error);
