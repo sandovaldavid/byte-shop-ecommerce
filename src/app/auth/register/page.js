@@ -9,7 +9,6 @@ import {
 	AiOutlineGoogle,
 } from 'react-icons/ai';
 import { useAuth } from '@/context/AuthContext';
-import { checkConnection } from '@/lib/appwrite';
 
 function RegisterPage() {
 	const router = useRouter();
@@ -41,8 +40,13 @@ function RegisterPage() {
 				throw new Error('Las contraseñas no coinciden');
 			}
 
-			await register(formData.email, formData.password, formData.name);
-			router.push('/');
+			const user = await register(
+				formData.email,
+				formData.password,
+				formData.name
+			);
+
+			router.push('/auth/verify/messague');
 		} catch (error) {
 			console.error('Error detallado:', error);
 			setError(
