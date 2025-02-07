@@ -11,6 +11,19 @@ export const authApi = {
 				name
 			);
 
+			const session = await account.createEmailPasswordSession(
+				email,
+				password
+			);
+
+			try {
+				await account.createVerification(
+					`${window.location.origin}/auth/verify`
+				);
+			} finally {
+				await account.deleteSessions();
+			}
+
 			return user;
 		} catch (error) {
 			console.error('Error en registro:', error);
@@ -25,11 +38,13 @@ export const authApi = {
 				password
 			);
 
-			const user = await account.get();
-			if (!user.emailVerification) {
-				throw new Error(
-					'Por favor verifica tu email antes de iniciar sesión'
-				);
+			if (!session.temporary) {
+				const user = await account.get();
+				if (!user.emailVerification) {
+					throw new Error(
+						'Por favor verifica tu email antes de iniciar sesión'
+					);
+				}
 			}
 
 			return session;
