@@ -32,6 +32,12 @@ export function AuthProvider({ children }) {
 
 	const login = async (email, password) => {
 		try {
+			try {
+				await authApi.logoutUser();
+			} catch (error) {
+				console.log('No había sesión activa para cerrar');
+			}
+
 			await authApi.loginUser(email, password);
 			await checkUser();
 		} catch (error) {
