@@ -1,9 +1,6 @@
-import productSchema from './product'
-import bannerSchema from './banner'
+import productSchema from './product';
+import bannerSchema from './banner';
 
 export const schema = {
-  types: [
-    productSchema,
-    bannerSchema,
-  ],
-}
+	types: [productSchema, bannerSchema],
+};
