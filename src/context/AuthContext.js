@@ -1,6 +1,7 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authApi } from '@/api/authController';
+import { account } from '@/lib/appwrite';
 
 const AuthContext = createContext();
 
@@ -14,9 +15,15 @@ export function AuthProvider({ children }) {
 
 	const checkUser = async () => {
 		try {
-			const currentUser = await authApi.getCurrentUser();
-			setUser(currentUser);
+			const session = await account.getSession('current');
+			if (session) {
+				const currentUser = await authApi.getCurrentUser();
+				setUser(currentUser);
+			} else {
+				setUser(null);
+			}
 		} catch (error) {
+			console.error('Error checking user:', error);
 			setUser(null);
 		} finally {
 			setLoading(false);
@@ -28,15 +35,20 @@ export function AuthProvider({ children }) {
 			await authApi.loginUser(email, password);
 			await checkUser();
 		} catch (error) {
+			console.error('Error en login:', error);
 			throw error;
 		}
 	};
 
 	const register = async (email, password, name) => {
 		try {
-			await authApi.registerUser(email, password, name);
-			await login(email, password);
+			const user = await authApi.registerUser(email, password, name);
+			await authApi.sendVerificationEmail(
+				`${window.location.origin}/auth/verify`
+			);
+			return user;
 		} catch (error) {
+			console.error('Error en registro:', error);
 			throw error;
 		}
 	};
@@ -46,7 +58,7 @@ export function AuthProvider({ children }) {
 			await authApi.logoutUser();
 			setUser(null);
 		} catch (error) {
-			console.error('Error logging out:', error);
+			console.error('Error en logout:', error);
 		}
 	};
 
