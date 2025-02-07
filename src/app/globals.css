@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-/* Modo Claro */
+  /* Modo Claro */
   --primary-light: #2D3AFE;
   --secondary-light: #00F7FF;
   --dark-light: #0A0B1E;
@@ -14,6 +14,10 @@
   --error-light: #FF3B3B;
   --background-light: #FFFFFF;
   --text-light: #0A0B1E;
+
+  /* Gradientes Modo Claro */
+  --gradient1-light: linear-gradient(135deg, var(--primary-light), var(--secondary-light), var(--accent1-light));
+  --gradient2-light: linear-gradient(135deg, var(--accent1-light), var(--accent2-light), var(--secondary-light));
 
   /* Modo Oscuro */
   --primary-dark: #4B56FF;
@@ -27,30 +31,9 @@
   --background-dark: #0A0B1E;
   --text-dark: #F8F9FF;
 
-  /* Gradientes Modo Claro */
-  --gradient1-light: linear-gradient(90deg, var(--primary-light), var(--secondary-light));
-  --gradient2-light: linear-gradient(90deg, var(--accent1-light), var(--accent2-light));
-
   /* Gradientes Modo Oscuro */
-  --gradient1-dark: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
-  --gradient2-dark: linear-gradient(90deg, var(--accent1-dark), var(--accent2-dark));
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: var(--primary-dark);
-    --secondary: var(--secondary-dark);
-    --dark: var(--dark-dark);
-    --light: var(--light-dark);
-    --accent1: var(--accent1-dark);
-    --accent2: var(--accent2-dark);
-    --success: var(--success-dark);
-    --error: var(--error-dark);
-    --background: var(--background-dark);
-    --text: var(--text-dark);
-    --gradient1: var(--gradient1-dark);
-    --gradient2: var(--gradient2-dark);
-  }
+  --gradient1-dark: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark), var(--accent1-dark));
+  --gradient2-dark: linear-gradient(135deg, var(--accent1-dark), var(--accent2-dark), var(--secondary-dark));
 }
 
 @media (prefers-color-scheme: light) {
@@ -70,12 +53,32 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: var(--primary-dark);
+    --secondary: var(--secondary-dark);
+    --dark: var(--dark-dark);
+    --light: var(--light-dark);
+    --accent1: var(--accent1-dark);
+    --accent2: var(--accent2-dark);
+    --success: var(--success-dark);
+    --error: var(--error-dark);
+    --background: var(--background-dark);
+    --text: var(--text-dark);
+    --gradient1: var(--gradient1-dark);
+    --gradient2: var(--gradient2-dark);
+  }
+}
+
 body {
-  background-color: var(--background);
+  background: var(--gradient1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   color: var(--text);
 }
 
-option{
+option {
   background-color: var(--background);
   color: var(--text);
 }
