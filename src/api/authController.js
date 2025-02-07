@@ -1,16 +1,23 @@
-// src/api/auth.js
 import { account } from '@/lib/appwrite';
 import { ID } from 'appwrite';
 
 export const authApi = {
 	registerUser: async (email, password, name) => {
 		try {
+			try {
+				await account.deleteSessions();
+			} catch (error) {
+			}
+
 			const user = await account.create(
 				ID.unique(),
 				email,
 				password,
 				name
 			);
+
+			await account.createEmailPasswordSession(email, password);
+
 			return user;
 		} catch (error) {
 			console.error('Error en registro:', error);
@@ -33,7 +40,7 @@ export const authApi = {
 
 	logoutUser: async () => {
 		try {
-			await account.deleteSession('current');
+			await account.deleteSessions();
 		} catch (error) {
 			console.error('Error en logout:', error);
 			throw error;
@@ -42,10 +49,26 @@ export const authApi = {
 
 	getCurrentUser: async () => {
 		try {
-			const user = await account.get();
-			return user;
+			let session;
+			try {
+				session = await account.getSession('current');
+			} catch (error) {
+				return null;
+			}
+
+			if (session) {
+				try {
+					const user = await account.get();
+					return user;
+				} catch (error) {
+					console.error('Error obteniendo datos del usuario:', error);
+					return null;
+				}
+			}
+
+			return null;
 		} catch (error) {
-			console.error('Error obteniendo usuario:', error);
+			console.error('Error inesperado en getCurrentUser:', error);
 			return null;
 		}
 	},
