@@ -4,19 +4,12 @@ import { ID } from 'appwrite';
 export const authApi = {
 	registerUser: async (email, password, name) => {
 		try {
-			try {
-				await account.deleteSessions();
-			} catch (error) {
-			}
-
 			const user = await account.create(
 				ID.unique(),
 				email,
 				password,
 				name
 			);
-
-			await account.createEmailPasswordSession(email, password);
 
 			return user;
 		} catch (error) {
@@ -31,6 +24,14 @@ export const authApi = {
 				email,
 				password
 			);
+
+			const user = await account.get();
+			if (!user.emailVerification) {
+				throw new Error(
+					'Por favor verifica tu email antes de iniciar sesión'
+				);
+			}
+
 			return session;
 		} catch (error) {
 			console.error('Error en login:', error);
