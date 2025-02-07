@@ -65,21 +65,17 @@ export const authApi = {
 
 	getCurrentUser: async () => {
 		try {
-			let session;
-			try {
-				session = await account.getSession('current');
-			} catch (error) {
-				return null;
+			const cachedUser = sessionStorage.getItem('currentUser');
+			if (cachedUser) {
+				return JSON.parse(cachedUser);
 			}
 
+			let session = await account.getSession('current');
+
 			if (session) {
-				try {
-					const user = await account.get();
-					return user;
-				} catch (error) {
-					console.error('Error obteniendo datos del usuario:', error);
-					return null;
-				}
+				const user = await account.get();
+				sessionStorage.setItem('currentUser', JSON.stringify(user));
+				return user;
 			}
 
 			return null;
