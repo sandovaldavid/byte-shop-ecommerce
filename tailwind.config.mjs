@@ -56,8 +56,14 @@ export default {
 					'75%': { transform: 'translateX(5px)' },
 				},
 				gradient: {
-					'0%, 100%': { backgroundPosition: '0% 50%' },
-					'50%': { backgroundPosition: '100% 50%' },
+					'0%, 100%': {
+						'background-size': '200% 200%',
+						'background-position': 'left center',
+					},
+					'50%': {
+						'background-size': '200% 200%',
+						'background-position': 'right center',
+					},
 				},
 				shine: {
 					'0%': { backgroundPosition: '0% 0%' },
@@ -80,7 +86,6 @@ export default {
 			scrollBehavior: ['smooth'],
 		},
 	},
-	// Y esta
 	corePlugins: {
 		scrollBehavior: true,
 	},
