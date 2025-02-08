@@ -3,10 +3,7 @@ import Link from 'next/link';
 
 function Footer() {
 	return (
-		<footer className='relative bg-gradient-to-b from-dark to-primary/90 text-light'>
-			{/* Grid de fondo */}
-			<div className='absolute inset-0 bg-[linear-gradient(rgba(45,58,254,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(45,58,254,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_100%,#000_70%,transparent_110%)]'></div>
-
+		<footer className='relative bg-gradient-to-b from-black/25 via-primary/40 to-black/20 text-light'>
 			{/* Contenido principal */}
 			<div className='relative z-10 mx-auto max-w-7xl px-6 py-12'>
 				<div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>

@@ -16,11 +16,12 @@ function Navbar() {
 	const { openCart } = useCart();
 
 	return (
-		<nav className='fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-white/10'>
+		<nav className='fixed top-0 left-0 right-0 z-50 bg-dark/80 dark:bg-black/50 backdrop-blur-xl border-b border-white/10'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<div className='flex items-center justify-between h-16'>
+					{/* Logo */}
 					<Link href='/' className='flex items-center space-x-2'>
-						<span className='text-2xl font-bold bg-gradient-to-r from-secondary to-accent1 bg-clip-text text-transparent hover:scale-105 transition-transform'>
+						<span className='text-2xl font-bold bg-gradient-to-r from-secondary via-accent1 to-accent2 bg-clip-text text-transparent hover:scale-105 transition-transform'>
 							TechStore
 						</span>
 					</Link>
@@ -28,22 +29,22 @@ function Navbar() {
 					<div className='hidden md:flex items-center space-x-8'>
 						<Link
 							href='/products'
-							className='text-light/80 hover:text-secondary transition-all duration-200 hover:scale-105'>
+							className='text-light hover:text-secondary font-medium transition-all duration-200 hover:scale-105'>
 							Productos
 						</Link>
 						<Link
 							href='/categories'
-							className='text-light/80 hover:text-secondary transition-all duration-200 hover:scale-105'>
+							className='text-light hover:text-secondary font-medium transition-all duration-200 hover:scale-105'>
 							Categorías
 						</Link>
 						<Link
 							href='/deals'
-							className='text-light/80 hover:text-secondary transition-all duration-200 hover:scale-105'>
+							className='text-light hover:text-secondary font-medium transition-all duration-200 hover:scale-105'>
 							Ofertas
 						</Link>
 						<Link
 							href='/support'
-							className='text-light/80 hover:text-secondary transition-all duration-200 hover:scale-105'>
+							className='text-light hover:text-secondary font-medium transition-all duration-200 hover:scale-105'>
 							Soporte
 						</Link>
 					</div>
