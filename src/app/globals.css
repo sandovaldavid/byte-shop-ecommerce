@@ -13,7 +13,7 @@
     --success-light: #00FFA3;
     --error-light: #FF3B3B;
     --background-light: #FFFFFF;
-    --text-light: #0A0B1E;
+    --text-light: #F8F9FF;
 
     /* Gradientes Modo Claro */
     --gradient1-light: linear-gradient(135deg, var(--primary-light), var(--secondary-light), var(--accent1-light));
