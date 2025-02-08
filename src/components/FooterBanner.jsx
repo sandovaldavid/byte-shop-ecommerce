@@ -4,21 +4,6 @@ import Link from 'next/link';
 function FooterBanner({ footerBanner }) {
 	return (
 		<div className='relative min-h-[400px] w-full overflow-hidden mt-16'>
-			{/* Fondo personalizado con múltiples capas */}
-			<div className='absolute inset-0'>
-				{/* Capa base con gradiente */}
-				<div className='absolute inset-0 bg-gradient-to-tr from-black/98 via-primary/10 to-accent2/5 dark:from-black/80 dark:via-primary/5 dark:to-accent2/5'></div>
-
-				{/* Grid tech con efecto de profundidad */}
-				<div className='absolute inset-0 bg-[linear-gradient(rgba(45,58,254,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(45,58,254,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(45,58,254,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(45,58,254,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]'></div>
-
-				{/* Efecto de neón sutil */}
-				<div className='absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent dark:from-transparent dark:via-secondary/2 dark:to-transparent animate-pulse-slow'></div>
-
-				{/* Overlay para mejorar contraste */}
-				<div className='absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 dark:from-black/60 dark:via-transparent dark:to-black/60 backdrop-blur-sm'></div>
-			</div>
-
 			{/* Contenido con efectos mejorados */}
 			<div className='relative z-10 flex flex-col lg:flex-row items-center justify-between h-full px-8 py-16 max-w-7xl mx-auto gap-8'>
 				{/* Sección izquierda con efectos tech */}
@@ -57,7 +42,7 @@ function FooterBanner({ footerBanner }) {
 							title: 'Envío Gratis',
 							desc: 'En compras mayores a $999',
 							icon: '🚚',
-							gradient: 'from-secondary to-accent1',
+							gradient: 'from-accent2 to-accent1/30',
 						},
 						{
 							title: 'Pago Seguro',
@@ -80,12 +65,12 @@ function FooterBanner({ footerBanner }) {
 					].map((feature, index) => (
 						<div
 							key={feature.title}
-							className='group relative p-6 bg-white/5 dark:bg-black/40 backdrop-blur-sm rounded-xl hover:bg-white/10 dark:hover:bg-black/60 transition-all duration-500 transform hover:translate-z-10'>
+							className='group relative p-6 bg-black/10 dark:bg-black/40 backdrop-blur-sm rounded-xl hover:bg-white/10 dark:hover:bg-black/60 transition-all duration-500 transform hover:translate-z-10'>
 							<div className='text-3xl mb-3 transform group-hover:scale-110 transition-transform duration-300'>
 								{feature.icon}
 							</div>
 							<h3
-								className={`bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent font-medium mb-2`}>
+								className={`bg-gradient-to-br ${feature.gradient} bg-clip-text text-transparent font-medium mb-2`}>
 								{feature.title}
 							</h3>
 							<p className='text-light/70 dark:text-light/60 text-sm'>
