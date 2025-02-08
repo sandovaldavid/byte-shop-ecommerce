@@ -17,7 +17,7 @@ function Product({ product }) {
 
 	return (
 		<Link href={productUrl}>
-			<div className='group relative overflow-hidden rounded-2xl bg-white/10 dark:bg-black/50 p-6 transition-all duration-500 hover:bg-white/20 dark:hover:bg-black/80 hover:shadow-xl hover:shadow-accent1/20 dark:hover:shadow-accent2/10 h-full border border-white/10 dark:border-white/5 backdrop-blur-md'>
+			<div className='group relative overflow-hidden rounded-2xl bg-black/30 p-6 transition-all duration-500 hover:bg-black/20 dark:hover:bg-black/50 hover:shadow-xl hover:shadow-accent1/20 dark:hover:shadow-accent2/10 h-full border border-white/10 dark:border-white/5 backdrop-blur-md'>
 				{/* Badge de descuento mejorado */}
 				{product.discount && (
 					<div className='absolute top-6 left-6 z-10 rounded-full bg-gradient-to-r from-accent1 via-accent2 to-accent1 bg-[length:200%_100%] animate-gradient px-4 py-1.5 text-sm font-medium text-light shadow-lg shadow-accent1/30 dark:shadow-accent2/30'>
@@ -38,7 +38,7 @@ function Product({ product }) {
 					/>
 
 					{/* Overlay cyberpunk mejorado */}
-					<div className='absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/70 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100'>
+					<div className='absolute inset-0 bg-gradient-to-t from-black/10 via-black/40 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100'>
 						<div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.3)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-shine'></div>
 					</div>
 
