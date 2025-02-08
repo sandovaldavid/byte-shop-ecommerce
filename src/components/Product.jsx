@@ -17,7 +17,7 @@ function Product({ product }) {
 
 	return (
 		<Link href={productUrl}>
-			<div className='group relative overflow-hidden rounded-2xl bg-white/10 dark:bg-dark/80 p-6 transition-all duration-500 hover:bg-white/20 dark:hover:bg-dark/90 hover:shadow-xl hover:shadow-accent1/20 dark:hover:shadow-accent2/10 h-full border border-white/10 dark:border-white/5 backdrop-blur-md'>
+			<div className='group relative overflow-hidden rounded-2xl bg-white/10 dark:bg-black/50 p-6 transition-all duration-500 hover:bg-white/20 dark:hover:bg-black/80 hover:shadow-xl hover:shadow-accent1/20 dark:hover:shadow-accent2/10 h-full border border-white/10 dark:border-white/5 backdrop-blur-md'>
 				{/* Badge de descuento mejorado */}
 				{product.discount && (
 					<div className='absolute top-6 left-6 z-10 rounded-full bg-gradient-to-r from-accent1 via-accent2 to-accent1 bg-[length:200%_100%] animate-gradient px-4 py-1.5 text-sm font-medium text-light shadow-lg shadow-accent1/30 dark:shadow-accent2/30'>
