@@ -6,14 +6,18 @@ import {
 	AiOutlineSearch,
 	AiOutlineMenu,
 	AiOutlineClose,
+	AiOutlineUser,
+	AiOutlineLogout,
 } from 'react-icons/ai';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { AuthButtons } from '@/components';
 
 function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const { openCart } = useCart();
+	const { user, logout } = useAuth();
 
 	return (
 		<nav className='fixed top-0 left-0 right-0 z-50 bg-dark/80 dark:bg-black/50 backdrop-blur-xl border-b border-white/10'>
@@ -120,19 +124,41 @@ function Navbar() {
 								className='text-light/80 hover:text-secondary transition-colors duration-200'>
 								Soporte
 							</Link>
-							{/* Auth links para móvil */}
+
+							{/* Auth links para móvil - Versión actualizada */}
 							<div className='flex flex-col space-y-2 pt-4 border-t border-white/10'>
-								<Link
-									href='/auth/login'
-									className='text-light/80 hover:text-secondary transition-colors duration-200 flex items-center gap-2'>
-									<AiOutlineUser />
-									Iniciar Sesión
-								</Link>
-								<Link
-									href='/auth/register'
-									className='bg-gradient-to-r from-accent1 to-accent2 text-light py-2 px-4 rounded-xl text-center'>
-									Registrarse
-								</Link>
+								{user?.name ? (
+									<>
+										{/* Usuario autenticado */}
+										<div className='flex items-center gap-2 text-light/80 px-2'>
+											<AiOutlineUser className='text-xl' />
+											<span className='font-medium bg-gradient-to-r from-secondary to-accent1 bg-clip-text text-transparent'>
+												{user.name}
+											</span>
+										</div>
+										<button
+											onClick={logout}
+											className='text-light/80 hover:text-error transition-colors duration-200 flex items-center gap-2 px-2'>
+											<AiOutlineLogout className='text-xl' />
+											Cerrar Sesión
+										</button>
+									</>
+								) : (
+									<>
+										{/* Usuario no autenticado */}
+										<Link
+											href='/auth/login'
+											className='text-light/80 hover:text-secondary transition-colors duration-200 flex items-center gap-2'>
+											<AiOutlineUser className='text-xl' />
+											Iniciar Sesión
+										</Link>
+										<Link
+											href='/auth/register'
+											className='bg-gradient-to-r from-accent1 to-accent2 text-light py-2 px-4 rounded-xl text-center hover:from-accent2 hover:to-accent1 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg shadow-accent1/20'>
+											Registrarse
+										</Link>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
