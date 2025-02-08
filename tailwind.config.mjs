@@ -78,6 +78,9 @@ export default {
 				'z-15': 'translateZ(15px)',
 				'z-20': 'translateZ(20px)',
 			},
+			backdropBlur: {
+				xs: '2px',
+			},
 		},
 	},
 	plugins: [],
