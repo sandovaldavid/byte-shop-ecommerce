@@ -9,6 +9,8 @@ import Footer from './Footer';
 function Layout({ children }) {
 	const pathname = usePathname();
 	const isAuthPage = pathname?.startsWith('/auth');
+	const isProductPage =
+		pathname?.includes('/products/') && !pathname?.endsWith('/products/');
 	const [showScrollTop, setShowScrollTop] = useState(false);
 
 	// Controlar cuándo mostrar el botón de volver arriba
@@ -30,7 +32,7 @@ function Layout({ children }) {
 	};
 
 	return (
-		<div className='flex flex-col min-h-screen bg-gradient-to-b from-background/95 to-background relative'>
+		<div className='flex flex-col min-h-screen w-full bg-gradient-to-b from-background/95 to-background'>
 			{/* Skip to content link for accessibility */}
 			<a
 				href='#main-content'
@@ -53,8 +55,7 @@ function Layout({ children }) {
 			{/* Main content with page transitions */}
 			<main
 				id='main-content'
-				className={`flex-grow w-full relative z-10 
-          ${!isAuthPage ? 'pt-6 pb-12' : ''}`}>
+				className={`flex-grow w-full ${!isAuthPage ? ' pt-6 pb-12' : ''} relative z-10`}>
 				<AnimatePresence mode='wait'>
 					<motion.div
 						key={pathname}
@@ -62,7 +63,7 @@ function Layout({ children }) {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -10 }}
 						transition={{ duration: 0.3 }}
-						className='w-full'>
+						className={`w-full h-full ${isProductPage ? 'min-h-[100vh]' : ''}`}>
 						{children}
 					</motion.div>
 				</AnimatePresence>
