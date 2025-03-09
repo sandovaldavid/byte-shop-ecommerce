@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import { urlFor } from '../lib/client';
 
 function Product({ product }) {
@@ -16,79 +15,108 @@ function Product({ product }) {
 			: 'https://placehold.co/600x400.png';
 
 	return (
-		<Link href={productUrl}>
-			<div className='group relative overflow-hidden rounded-2xl bg-black/30 p-6 transition-all duration-500 hover:bg-black/20 dark:hover:bg-black/50 hover:shadow-xl hover:shadow-accent1/20 dark:hover:shadow-accent2/10 h-full border border-white/10 dark:border-white/5 backdrop-blur-md'>
-				{/* Badge de descuento mejorado */}
-				{product.discount && (
-					<div className='absolute top-6 left-6 z-10 rounded-full bg-gradient-to-r from-accent1 via-accent2 to-accent1 bg-[length:200%_100%] animate-gradient px-4 py-1.5 text-sm font-medium text-light shadow-lg shadow-accent1/30 dark:shadow-accent2/30'>
-						-{product.discount}%
-					</div>
-				)}
-
-				{/* Contenedor de imagen con efectos mejorados */}
-				<div className='relative aspect-square w-full mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-accent2/10 dark:from-primary/20 dark:to-accent2/20 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-500'>
-					{/* Efecto de brillo tecnológico mejorado */}
-					<div className='absolute inset-0 bg-gradient-to-tr from-secondary/30 via-transparent to-accent1/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
-
-					<Image
-						src={productImage}
-						alt={product.name || 'Producto no disponible'}
-						fill
-						className='object-cover transition-all duration-500 group-hover:scale-110 group-hover:rotate-2'
-					/>
-
-					{/* Overlay cyberpunk mejorado */}
-					<div className='absolute inset-0 bg-gradient-to-t from-black/10 via-black/40 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100'>
-						<div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.3)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-shine'></div>
-					</div>
-
-					{/* Botón con efecto neón mejorado */}
-					<button className='absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl px-6 py-3 bg-gradient-to-r from-accent1 via-accent2 to-accent1 bg-[length:200%_100%] animate-gradient text-sm font-medium text-light opacity-0 transition-all duration-500 hover:shadow-lg           over:shadow-accent1/50 dark:hover:shadow-accent2/50 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 border border-white/20'>
-						Ver Detalles
-					</button>
-				</div>
-
-				{/* Contenido de texto mejorado */}
-				<div className='space-y-4'>
-					<div className='flex items-center justify-between gap-4'>
-						<h3 className='text-xl font-medium text-light dark:text-light/90 transition-colors group-hover:text-secondary dark:group-hover:text-secondary/90 line-clamp-2 group-hover:line-clamp-none'>
-							{product.name || 'Producto no disponible'}
-						</h3>
-						<span
-							className={`text-xs px-3 py-1.5 rounded-full font-medium ${
-								product.inStock
-									? 'bg-success/20 text-success dark:bg-success/30 dark:text-success/90'
-									: 'bg-error/20 text-error dark:bg-error/30 dark:text-error/90'
-							}`}>
-							{product.inStock ? 'En Stock' : 'Agotado'}
-						</span>
-					</div>
-
-					<div className='flex items-center justify-between pt-2'>
-						<div className='flex items-center gap-2'>
-							<span className='text-2xl font-bold bg-gradient-to-r from-secondary to-accent1 bg-clip-text text-transparent group-hover:from-accent1 group-hover:to-accent2 transition-all duration-500'>
-								${product.price || '0.00'}
-							</span>
-							{product.oldPrice && (
-								<span className='text-sm text-light/40 dark:text-light/30 line-through'>
-									${product.oldPrice}
+		<div className='group h-full'>
+			<Link
+				href={productUrl}
+				className='block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-2xl'>
+				<article className='relative overflow-hidden rounded-2xl bg-dark/30 dark:bg-dark/40 backdrop-blur-md border border-white/10 dark:border-white/5 h-full flex flex-col transition-all duration-500 hover:shadow-xl hover:shadow-accent1/10 dark:hover:shadow-accent2/5'>
+					{/* Imagen y área superior */}
+					<div className='relative aspect-square w-full overflow-hidden rounded-t-xl'>
+						{/* Badge de descuento */}
+						{product.discount && (
+							<div className='absolute top-3 left-3 z-10 rounded-full bg-gradient-to-r from-accent1 to-accent2 px-3 py-1 text-xs font-medium text-light shadow-lg shadow-accent1/20 dark:shadow-accent2/20 flex items-center justify-center'>
+								<span className='animate-pulse'>
+									-{product.discount}%
 								</span>
-							)}
+							</div>
+						)}
+
+						{/* Badge de stock */}
+						<div
+							className={`absolute top-3 right-3 z-10 rounded-full px-3 py-1 text-xs font-medium flex items-center justify-center 
+              ${
+					product.inStock
+						? 'bg-success/20 text-success border border-success/30'
+						: 'bg-error/20 text-error border border-error/30'
+				}`}>
+							<span
+								className={`w-1.5 h-1.5 rounded-full mr-1 ${product.inStock ? 'bg-success animate-pulse' : 'bg-error'}`}></span>
+							{product.inStock ? 'En Stock' : 'Agotado'}
 						</div>
 
-						{/* Rating con estilo tech mejorado */}
-						<div className='flex items-center gap-1 px-3 py-1.5 rounded-lg bg-secondary/20 dark:bg-secondary/30 border border-secondary/20 dark:border-secondary/10'>
-							<span className='text-secondary dark:text-secondary/90'>
-								★
-							</span>
-							<span className='text-sm font-medium text-secondary dark:text-secondary/90'>
-								{product.rating || '4.5'}
-							</span>
+						{/* Imagen con degradado base */}
+						<div className='absolute inset-0 bg-gradient-to-br from-primary/5 to-accent2/5 dark:from-primary/10 dark:to-accent2/10'></div>
+
+						{/* Imagen principal */}
+						<Image
+							src={productImage}
+							alt={product.name || 'Producto no disponible'}
+							fill
+							sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
+							className='object-cover transition-all duration-500 group-hover:scale-105'
+						/>
+
+						{/* Overlay en hover */}
+						<div className='absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300'></div>
+
+						{/* Efecto shine */}
+						<div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500'>
+							<div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-shine'></div>
+						</div>
+
+						{/* Botón "Ver Detalles" */}
+						<div className='absolute bottom-0 inset-x-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out'>
+							<div className='bg-gradient-to-r from-accent1/90 to-accent2/90 backdrop-blur-sm text-center py-2.5 rounded-lg text-light text-sm font-medium shadow-lg transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 hover:shadow-accent1/30 dark:hover:shadow-accent2/30 border border-white/10'>
+								Ver Detalles
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</Link>
+
+					{/* Contenido de texto */}
+					<div className='flex flex-col flex-grow p-4 space-y-3'>
+						{/* Título y precio */}
+						<div className='flex-grow'>
+							<h3 className='font-medium text-lg text-light dark:text-light/90 leading-tight line-clamp-2 group-hover:text-secondary dark:group-hover:text-secondary/90 transition-colors duration-300'>
+								{product.name || 'Producto no disponible'}
+							</h3>
+						</div>
+
+						{/* Parte inferior con precio y rating */}
+						<div className='flex items-center justify-between mt-auto pt-2 border-t border-white/5'>
+							<div className='flex flex-col'>
+								<span className='text-xl font-bold bg-gradient-to-r from-secondary to-accent1 bg-clip-text text-transparent'>
+									${product.price || '0.00'}
+								</span>
+								{product.oldPrice && (
+									<span className='text-xs text-light/50 dark:text-light/40 line-through'>
+										${product.oldPrice}
+									</span>
+								)}
+							</div>
+
+							{/* Rating más elegante */}
+							<div className='flex items-center bg-dark/20 dark:bg-dark/40 rounded-lg px-2 py-1'>
+								<div className='flex items-center'>
+									{[1, 2, 3, 4, 5].map((star) => (
+										<svg
+											key={star}
+											xmlns='http://www.w3.org/2000/svg'
+											className={`w-3.5 h-3.5 ${star <= Math.floor(product.rating || 4.5) ? 'text-secondary' : 'text-light/20'}`}
+											fill='currentColor'
+											viewBox='0 0 24 24'>
+											<path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z' />
+										</svg>
+									))}
+								</div>
+								<span className='ml-1 text-xs font-medium text-light/70'>
+									{product.rating || '4.5'}
+								</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			</Link>
+		</div>
 	);
 }
 
