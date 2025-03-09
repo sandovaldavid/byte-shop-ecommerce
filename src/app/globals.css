@@ -3,82 +3,113 @@
 @tailwind utilities;
 
 :root {
-    /* Modo Claro */
-    --primary-light: #2D3AFE;
-    --secondary-light: #00F7FF;
-    --dark-light: #0A0B1E;
-    --light-light: #F8F9FF;
-    --accent1-light: #FF2E63;
-    --accent2-light: #7B61FF;
-    --success-light: #00FFA3;
-    --error-light: #FF3B3B;
-    --background-light: #FFFFFF;
-    --text-light: #F8F9FF;
+	/* Modo Claro */
+	--primary-light: #3355ff; /* Azul tecnológico más vibrante */
+	--secondary-light: #00d8e6; /* Cian más suave pero distintivo */
+	--dark-light: #121a2f; /* Azul oscuro con más profundidad */
+	--light-light: #f4f7ff; /* Blanco azulado suave */
+	--accent1-light: #ff3366; /* Rosa-rojo vibrante */
+	--accent2-light: #6c4aff; /* Violeta refinado */
+	--success-light: #0ad670; /* Verde más natural pero tech */
+	--error-light: #ff3b4e; /* Rojo con toque coral */
+	--background-light: #ffffff; /* Blanco puro */
+	--text-light: #172142; /* Azul oscuro para mejor lectura */
+	--gray-light: #8a94a6; /* Gris neutro para elementos secundarios */
 
-    /* Gradientes Modo Claro */
-    --gradient1-light: linear-gradient(135deg, var(--primary-light), var(--secondary-light), var(--accent1-light));
-    --gradient2-light: linear-gradient(135deg, var(--accent1-light), var(--accent2-light), var(--secondary-light));
+	/* Modo Claro (en valores RGB) */
+	--primary: 51, 85, 255; /* #3355FF */
+	--secondary: 0, 216, 230; /* #00D8E6 */
+	--dark: 18, 26, 47; /* #121A2F */
+	--light: 244, 247, 255; /* #F4F7FF */
+	--accent1: 255, 51, 102; /* #FF3366 */
+	--accent2: 108, 74, 255; /* #6C4AFF */
+	--success: 10, 214, 112; /* #0AD670 */
+	--error: 255, 59, 78; /* #FF3B4E */
+	--background: 255, 255, 255; /* #FFFFFF */
+	--text: 23, 33, 66; /* #172142 */
+	--gray: 138, 148, 166; /* #8A94A6 */
 
-    /* Modo Oscuro */
-    --primary-dark: #4B56FF;
-    --secondary-dark: #33FFFF;
-    --dark-dark: #000004;
-    --light-dark: #F8F9FF;
-    --accent1-dark: #FF4777;
-    --accent2-dark: #9985FF;
-    --success-dark: #33FFB6;
-    --error-dark: #FF5252;
-    --background-dark: #0A0B1E;
-    --text-dark: #F8F9FF;
+	/* Modo Oscuro */
+	--primary-dark: #4f6aff; /* Azul con más luminosidad */
+	--secondary-dark: #00e8f5; /* Cian brillante pero no cegador */
+	--dark-dark: #070b14; /* Negro con matiz azul */
+	--light-dark: #e8efff; /* Blanco azulado más suave */
+	--accent1-dark: #ff4c78; /* Rosa con mejor legibilidad */
+	--accent2-dark: #8776ff; /* Violeta equilibrado */
+	--success-dark: #25e985; /* Verde con mejor visibilidad */
+	--error-dark: #ff4d61; /* Rojo alarma visible */
+	--background-dark: #0a1022; /* Azul muy oscuro con toque tech */
+	--text-dark: #e8efff; /* Blanco azulado menos brillante */
+	--gray-dark: #7a8599; /* Gris para elementos secundarios */
 
-    /* Gradientes Modo Oscuro */
-    --gradient1-dark: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark), var(--accent1-dark));
-    --gradient2-dark: linear-gradient(135deg, var(--accent1-dark), var(--accent2-dark), var(--secondary-dark));
-}
+	/* Gradientes Modo Claro - Más sutiles y modernos */
+	--gradient1-light: linear-gradient(
+		135deg,
+		#3355ff,
+		rgba(0, 216, 230, 0.9),
+		rgba(255, 51, 102, 0.8)
+	);
+	--gradient2-light: linear-gradient(
+		135deg,
+		rgba(255, 51, 102, 0.8),
+		rgba(108, 74, 255, 0.9),
+		#00d8e6
+	);
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --primary: var(--primary-light);
-        --secondary: var(--secondary-light);
-        --dark: var(--dark-light);
-        --light: var(--light-light);
-        --accent1: var(--accent1-light);
-        --accent2: var(--accent2-light);
-        --success: var(--success-light);
-        --error: var(--error-light);
-        --background: var(--background-light);
-        --text: var(--text-light);
-        --gradient1: var(--gradient1-light);
-        --gradient2: var(--gradient2-light);
-    }
+	/* Gradientes Modo Oscuro - Más profundos y sofisticados */
+	--gradient1-dark: linear-gradient(
+		135deg,
+		rgba(79, 106, 255, 0.9),
+		rgba(0, 232, 245, 0.7),
+		rgba(255, 76, 120, 0.6)
+	);
+	--gradient2-dark: linear-gradient(
+		135deg,
+		rgba(255, 76, 120, 0.7),
+		rgba(135, 118, 255, 0.8),
+		rgba(0, 232, 245, 0.7)
+	);
+
+	/* Nuevas variables para efectos de glassmorphism */
+	--glass-light: rgba(255, 255, 255, 0.7);
+	--glass-dark: rgba(10, 16, 34, 0.7);
+	--glass-border-light: rgba(255, 255, 255, 0.5);
+	--glass-border-dark: rgba(255, 255, 255, 0.1);
+	--glass-shadow-light: 0 8px 32px rgba(18, 26, 47, 0.1);
+	--glass-shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+	/* Variables para efectos neumórficos */
+	--neuro-shadow-light: 8px 8px 16px rgba(18, 26, 47, 0.08),
+		-8px -8px 16px rgba(255, 255, 255, 0.8);
+	--neuro-shadow-dark: 8px 8px 16px rgba(0, 0, 0, 0.4),
+		-8px -8px 16px rgba(30, 39, 63, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --primary: var(--primary-dark);
-        --secondary: var(--secondary-dark);
-        --dark: var(--dark-dark);
-        --light: var(--light-dark);
-        --accent1: var(--accent1-dark);
-        --accent2: var(--accent2-dark);
-        --success: var(--success-dark);
-        --error: var(--error-dark);
-        --background: var(--background-dark);
-        --text: var(--text-dark);
-        --gradient1: var(--gradient1-dark);
-        --gradient2: var(--gradient2-dark);
-    }
+	:root {
+		--primary: 79, 106, 255; /* #4F6AFF */
+		--secondary: 0, 232, 245; /* #00E8F5 */
+		--dark: 7, 11, 20; /* #070B14 */
+		--light: 232, 239, 255; /* #E8EFFF */
+		--accent1: 255, 76, 120; /* #FF4C78 */
+		--accent2: 135, 118, 255; /* #8776FF */
+		--success: 37, 233, 133; /* #25E985 */
+		--error: 255, 77, 97; /* #FF4D61 */
+		--background: 10, 16, 34; /* #0A1022 */
+		--text: 232, 239, 255; /* #E8EFFF */
+		--gray: 122, 133, 153; /* #7A8599 */
+	}
 }
 
 body {
-    background: var(--gradient1);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: var(--text);
+	background: var(--gradient1);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	color: var(--text);
 }
 
 option {
-    background-color: var(--background);
-    color: var(--text);
+	background-color: var(--background);
+	color: var(--text);
 }
