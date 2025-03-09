@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	darkMode: 'class',
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,16 +9,120 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: 'var(--primary)',
-				secondary: 'var(--secondary)',
-				dark: 'var(--dark)',
-				light: 'var(--light)',
-				accent1: 'var(--accent1)',
-				accent2: 'var(--accent2)',
-				success: 'var(--success)',
-				error: 'var(--error)',
-				background: 'var(--background)',
-				text: 'var(--text)',
+				primary: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--primary), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--primary), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--primary))`;
+				},
+				secondary: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--secondary), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--secondary), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--secondary))`;
+				},
+				dark: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--dark), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--dark), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--dark))`;
+				},
+				light: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--light), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--light), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--light))`;
+				},
+				accent1: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--accent1), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--accent1), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--accent1))`;
+				},
+				accent2: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--accent2), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--accent2), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--accent2))`;
+				},
+				success: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--success), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--success), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--success))`;
+				},
+				error: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--error), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--error), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--error))`;
+				},
+				background: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--background), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--background), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--background))`;
+				},
+				text: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--text), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--text), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--text))`;
+				},
+				gray: ({ opacityVariable, opacityValue }) => {
+					if (opacityValue !== undefined) {
+						return `rgba(var(--gray), ${opacityValue})`;
+					}
+					if (opacityVariable !== undefined) {
+						return `rgba(var(--gray), var(${opacityVariable}, 1))`;
+					}
+					return `rgb(var(--gray))`;
+				},
+			},
+			// El resto de tu configuración sigue igual
+			backgroundColor: {
+				'glass-light': 'var(--glass-light)',
+				'glass-dark': 'var(--glass-dark)',
+			},
+			borderColor: {
+				'glass-light': 'var(--glass-border-light)',
+				'glass-dark': 'var(--glass-border-dark)',
+			},
+			boxShadow: {
+				'glass-light': 'var(--glass-shadow-light)',
+				'glass-dark': 'var(--glass-shadow-dark)',
+				'neuro-light': 'var(--neuro-shadow-light)',
+				'neuro-dark': 'var(--neuro-shadow-dark)',
 			},
 			animation: {
 				'scale-in': 'scale-in 0.5s ease-out',
