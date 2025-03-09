@@ -55,7 +55,7 @@ function Layout({ children }) {
 			{/* Main content with page transitions */}
 			<main
 				id='main-content'
-				className={`flex-grow w-full ${!isAuthPage ? ' pt-6 pb-12' : ''} relative z-10`}>
+				className={`flex-grow w-full ${!isAuthPage ? ' pt-6' : ''} relative z-10`}>
 				<AnimatePresence mode='wait'>
 					<motion.div
 						key={pathname}
