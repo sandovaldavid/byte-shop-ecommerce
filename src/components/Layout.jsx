@@ -9,6 +9,7 @@ import Footer from './Footer';
 function Layout({ children }) {
 	const pathname = usePathname();
 	const isAuthPage = pathname?.startsWith('/auth');
+	const isProfile = pathname?.startsWith('/profile');
 	const isProductPage =
 		pathname?.includes('/products/') && !pathname?.endsWith('/products/');
 	const [showScrollTop, setShowScrollTop] = useState(false);
@@ -46,8 +47,8 @@ function Layout({ children }) {
 			<div className='fixed bottom-0 right-0 w-[600px] h-[600px] bg-accent1/5 dark:bg-accent1/3 rounded-full filter blur-3xl opacity-50 pointer-events-none'></div>
 
 			{/* Header with Navbar */}
-			{!isAuthPage && (
-				<header className='sticky top-0 z-50 w-full'>
+			{(!isAuthPage && !isProfile) && (
+				<header className='sticky top-0 z-20 w-full'>
 					<Navbar />
 				</header>
 			)}
@@ -55,7 +56,7 @@ function Layout({ children }) {
 			{/* Main content with page transitions */}
 			<main
 				id='main-content'
-				className={`flex-grow w-full ${!isAuthPage ? ' pt-6' : ''} relative z-10`}>
+				className={`flex-grow w-full ${!isAuthPage && !isProfile ? ' pt-6' : ''} relative z-10`}>
 				<AnimatePresence mode='wait'>
 					<motion.div
 						key={pathname}
