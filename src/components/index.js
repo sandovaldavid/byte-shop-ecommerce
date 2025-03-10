@@ -9,3 +9,4 @@ export { default as ProductList } from './ProductList.jsx';
 export { default as Loading } from './Loading.jsx';
 export { default as NotFound } from './NotFound.jsx';
 export { default as AuthButtons } from './AuthButtons.jsx';
+export { default as ProfileLayout } from './profile/layout/ProfileLayout.jsx';
