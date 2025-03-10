@@ -101,10 +101,6 @@
 	}
 }
 
-* {
-	opacity: 1 !important;
-}
-
 body {
 	background: var(--gradient1);
 	background-repeat: no-repeat;
