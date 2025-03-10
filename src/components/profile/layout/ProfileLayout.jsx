@@ -182,6 +182,15 @@ const ProfileLayout = ({
 								exit={{ opacity: 0 }}
 								transition={{ duration: 0.2 }}
 								onClick={() => setIsMobileSidebarOpen(false)}
+								key='sidebar-overlay'
+								onAnimationComplete={(definition) => {
+									if (
+										definition &&
+										definition.opacity === 0
+									) {
+										setIsMobileSidebarOpen(false);
+									}
+								}}
 							/>
 
 							<motion.div
@@ -189,6 +198,7 @@ const ProfileLayout = ({
 								initial={{ x: '-100%' }}
 								animate={{ x: 0 }}
 								exit={{ x: '-100%' }}
+								key='sidebar-content'
 								transition={{
 									type: 'spring',
 									damping: 25,
