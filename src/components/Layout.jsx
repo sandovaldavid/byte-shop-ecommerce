@@ -48,7 +48,7 @@ function Layout({ children }) {
 
 			{/* Header with Navbar */}
 			{!isAuthPage && !isProfile && (
-				<header className='sticky top-0 z-20 w-full'>
+				<header className='sticky top-0 z-30 w-full'>
 					<Navbar />
 				</header>
 			)}
