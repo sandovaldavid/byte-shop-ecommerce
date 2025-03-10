@@ -2,28 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 import {
-	AiOutlineEdit,
-	AiOutlineShopping,
-	AiOutlineHeart,
-	AiOutlineStar,
 	AiOutlineUser,
-	AiOutlineClockCircle,
-	AiOutlineCalendar,
-	AiOutlineArrowRight,
-	AiOutlineLoading3Quarters,
 	AiOutlineInfoCircle,
-	AiOutlineWallet,
-	AiOutlineShoppingCart,
-	AiOutlineCheckCircle,
-	AiOutlineEnvironment,
-	AiOutlineMail,
-	AiOutlinePhone,
 } from 'react-icons/ai';
-import { RiTimeLine, RiShoppingBag3Line } from 'react-icons/ri';
-import { BsShieldCheck } from 'react-icons/bs';
 import ProfileLoadingSkeleton from '@/components/profile/utils/ProfileLoadingSkeleton';
 import ProfileEmptyState from '@/components/profile/utils/ProfileEmptyState';
 import WellcomeBanner from '@/components/profile/WellcomeBanner';

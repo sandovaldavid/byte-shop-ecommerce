@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import OrderList from '@/components/profile/orders/OrderList';
 import ProfileLoadingSkeleton from '@/components/profile/utils/ProfileLoadingSkeleton';
 
