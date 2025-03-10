@@ -177,7 +177,7 @@ export default function OrdersPage() {
 				loading={isLoading}
 				error={error}
 				stats={userStats}
-				showMetrics={true}
+				showMetrics={false}
 				onSelectOrder={handleViewOrderDetail}
 			/>
 		</div>
