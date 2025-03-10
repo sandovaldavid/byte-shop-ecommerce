@@ -47,7 +47,7 @@ function Layout({ children }) {
 			<div className='fixed bottom-0 right-0 w-[600px] h-[600px] bg-accent1/5 dark:bg-accent1/3 rounded-full filter blur-3xl opacity-50 pointer-events-none'></div>
 
 			{/* Header with Navbar */}
-			{(!isAuthPage && !isProfile) && (
+			{!isAuthPage && !isProfile && (
 				<header className='sticky top-0 z-20 w-full'>
 					<Navbar />
 				</header>
@@ -71,7 +71,7 @@ function Layout({ children }) {
 			</main>
 
 			{/* Footer */}
-			{!isAuthPage && (
+			{!isAuthPage && !isProfile && (
 				<footer className='relative z-10 w-full mt-auto'>
 					<Footer />
 				</footer>
