@@ -56,14 +56,10 @@ function Layout({ children }) {
 			{/* Main content with page transitions */}
 			<main
 				id='main-content'
-				className={`flex-grow w-full ${!isAuthPage && !isProfile ? ' pt-6' : ''} relative z-10`}>
+				className={`flex-grow w-full ${!isAuthPage && !isProfile ? ' pt-6' : ''} relative z-20`}>
 				<AnimatePresence mode='wait'>
 					<motion.div
 						key={pathname}
-						initial={{ opacity: 0, y: 10 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: -10 }}
-						transition={{ duration: 0.3 }}
 						className={`w-full h-full ${isProductPage ? 'min-h-[100vh]' : ''}`}>
 						{children}
 					</motion.div>
