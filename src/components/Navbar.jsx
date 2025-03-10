@@ -50,7 +50,7 @@ function Navbar() {
 
 	return (
 		<nav
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+			className={`fixed top-0 left-0 right-0 transition-all duration-300 ${
 				isScrolled
 					? 'bg-dark/90 dark:bg-dark/95 shadow-lg py-2'
 					: 'bg-dark/75 dark:bg-black/60 py-3'
