@@ -58,17 +58,15 @@ function Navbar() {
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<div className='flex items-center justify-between'>
 					{/* Logo con efecto mejorado */}
-					<Link href='/' className='flex items-center group'>
-						<div className='relative overflow-hidden'>
-							<span
-								className='text-2xl font-bold bg-gradient-to-r from-secondary via-accent1 to-accent2 
-                bg-clip-text text-transparent group-hover:scale-105 transition-all duration-300'>
-								TechStore
-							</span>
-							<span
-								className='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-accent1 
-                group-hover:w-full transition-all duration-500'></span>
+					<Link
+						href='/'
+						className='flex items-center gap-2 group py-2'>
+						<div className='w-9 h-9 rounded-full bg-gradient-to-br from-secondary to-accent1 flex items-center justify-center text-light shadow-lg shadow-accent1/20'>
+							<span className='font-bold text-lg'>T</span>
 						</div>
+						<span className='text-xl sm:text-2xl font-bold bg-gradient-to-r from-secondary to-accent1 bg-clip-text text-transparent group-hover:from-accent1 group-hover:to-secondary transition-all duration-300'>
+							TechStore
+						</span>
 					</Link>
 
 					{/* Links de navegación - Desktop */}
