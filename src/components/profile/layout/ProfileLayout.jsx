@@ -157,10 +157,10 @@ const ProfileLayout = ({
 			</div>
 
 			{/* Main Layout */}
-			<div className='flex-1 flex'>
+			<div className='flex-1 flex flex-row'>
 				{/* Desktop Sidebar */}
-				<aside className='hidden md:block w-0 md:w-72 lg:w-80 flex-shrink-0 sticky top-[73px] self-start h-[calc(100vh-73px)] z-40'>
-					<div className='h-full overflow-hidden hover:overflow-y-auto scrollbar-none pr-2'>
+				<aside className='hidden md:flex md:w-72 lg:w-80 flex-shrink-0 relative'>
+					<div className='sticky top-[73px] h-auto overflow-y-auto scrollbar-none pr-2 w-full'>
 						<ProfileSidebar
 							user={user}
 							className='h-full'
@@ -185,7 +185,7 @@ const ProfileLayout = ({
 							/>
 
 							<motion.div
-								className='fixed inset-y-0 left-0 w-72 z-[70] md:hidden'
+								className='fixed inset-y-0 left-0 w-72 z-[70] md:hidden overflow-y-auto scrollbar-none'
 								initial={{ x: '-100%' }}
 								animate={{ x: 0 }}
 								exit={{ x: '-100%' }}
@@ -287,7 +287,7 @@ const ProfileLayout = ({
 			</div>
 
 			{/* Mobile Navigation */}
-			<div className='md:hidden z-[70]'>
+			<div className='fixed bottom-0 left-0 right-0 md:hidden z-[70] bg-dark/80 backdrop-blur-md border-t border-white/5'>
 				<MobileProfileNavigation
 					onLogout={handleLogout}
 					onNavigate={handleNavigation}
