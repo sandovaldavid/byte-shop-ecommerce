@@ -101,6 +101,10 @@
 	}
 }
 
+* {
+	opacity: 1 !important;
+}
+
 body {
 	background: var(--gradient1);
 	background-repeat: no-repeat;
@@ -112,4 +116,35 @@ body {
 option {
 	background-color: var(--background);
 	color: var(--text);
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+@layer utilities {
+	.scrollbar-none {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.scrollbar-none::-webkit-scrollbar {
+		display: none; /* Chrome, Safari and Opera */
+	}
+
+	/* Scrollbar personalizada y sutil si prefieres tener una indicación visual */
+	.scrollbar-thin {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-radius: 20px;
+	}
 }
