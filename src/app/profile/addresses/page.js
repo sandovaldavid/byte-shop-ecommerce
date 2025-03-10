@@ -7,8 +7,8 @@ import {
 	AiOutlinePlus,
 	AiOutlineInfoCircle,
 } from 'react-icons/ai';
-import ProfileLayout from '@/components/profile/layout/ProfileLayout';
 import AddressList from '@/components/profile/addresses/AddressList';
+import ProfileLoadingSkeleton from '@/components/profile/utils/ProfileLoadingSkeleton';
 
 // Mock addresses - Replace with your actual data fetching
 const mockAddresses = [
@@ -209,6 +209,10 @@ export default function AddressesPage() {
 			transition: { duration: 0.5 },
 		},
 	};
+
+	if (isLoading) {
+		return <ProfileLoadingSkeleton />;
+	}
 
 	return (
 		<motion.div
