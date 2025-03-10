@@ -88,7 +88,7 @@ function ProductDetail({ params }) {
 			<div className='fixed bottom-0 right-0 w-[600px] h-[600px] bg-accent1/5 dark:bg-accent1/3 rounded-full filter blur-3xl opacity-30 pointer-events-none'></div>
 
 			{/* Main content container */}
-			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+			<div className='max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10 mt-6'>
 				{/* Breadcrumb navigation */}
 				<nav className='mb-6'>
 					<ol className='flex items-center space-x-2 text-sm text-light/60'>
