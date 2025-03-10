@@ -28,7 +28,7 @@ import ProfileLoadingSkeleton from '@/components/profile/utils/ProfileLoadingSke
 import ProfileEmptyState from '@/components/profile/utils/ProfileEmptyState';
 import WellcomeBanner from '@/components/profile/WellcomeBanner';
 import RecentOrder from '@/components/profile/RecentOrder';
-import WishList from '@/components/profile/WishList';
+// import WishList from '@/components/profile/WishList';
 import RecentActivity from '@/components/profile/RecentActivity';
 import { AccountInformation } from '@/components';
 
